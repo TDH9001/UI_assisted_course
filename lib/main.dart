@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'dart:developer' as dev;
+//FIXME: IM ABCK BABY
 
 //TODO: craetea neavigator service
 void main() {
