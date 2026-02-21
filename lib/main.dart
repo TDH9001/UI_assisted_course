@@ -10,7 +10,7 @@ void main() {
 }
 
 class Course_assisted_ui_testing extends StatelessWidget {
-  Course_assisted_ui_testing({super.key});
+  const Course_assisted_ui_testing({super.key});
 
   // This widget is the root of your application.
   @override
@@ -20,8 +20,9 @@ class Course_assisted_ui_testing extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.menu),
-          title: const Text('app demo'),
+          actions: [],
+          leading: Icon(Icons.menu, color: Colors.white),
+          title: const Text('app demo', style: TextStyle(color: Colors.white)),
           backgroundColor: Colors.black,
         ),
         body: LayoutBuilder(
