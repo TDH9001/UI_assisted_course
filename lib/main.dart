@@ -20,6 +20,7 @@ class Course_assisted_ui_testing extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          leading: Icon(Icons.menu),
           title: const Text('app demo'),
           backgroundColor: Colors.black,
         ),
