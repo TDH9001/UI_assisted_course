@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-class GridBoxWidget extends StatelessWidget {
-  final int count;
-  GridBoxWidget({super.key, required this.count});
+class MobileGridBoxWidget extends StatelessWidget {
+  MobileGridBoxWidget({super.key});
   @override
   Widget build(BuildContext context) {
     final data = MediaQuery.sizeOf(context);
 
     return SliverGrid.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: count,
+        crossAxisCount: 2,
       ),
       itemBuilder: (BuildContext context, int index) {
         return AspectRatio(
@@ -24,7 +23,7 @@ class GridBoxWidget extends StatelessWidget {
           ),
         );
       },
-      itemCount: 10,
+      itemCount: 4,
     );
   }
 }
