@@ -42,11 +42,10 @@ class _Course_assisted_ui_testingState
         ),
         body: LayoutBuilder(
           builder: (context, constraints) {
-            if (constraints.maxWidth > 600) {
+            if (constraints.maxWidth < 600) {
               //Mobile Ui
               return MobileUiScrollUi(count: 9, data: data);
-            } else if (constraints.maxWidth < 900 &&
-                constraints.maxWidth > 600) {
+            } else if (constraints.maxWidth < 900) {
               //Tablet Ui
               return TabletScroolUi(data: data);
             } else {
