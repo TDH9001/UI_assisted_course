@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ListViewSection extends StatelessWidget {
-  final Size data;
-  const ListViewSection({super.key, required this.data});
+  const ListViewSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,7 @@ class ListViewSection extends StatelessWidget {
           margin: EdgeInsets.all(8),
           color: Colors.black,
           width: double.infinity,
-          height: data.height / 8,
+          height: 80,
         );
       },
     );

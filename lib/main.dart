@@ -8,19 +8,19 @@ import 'package:movie_app/list_view_section.dart';
 
 //TODO: craetea neavigator service
 void main() {
-  runApp(Course_assisted_ui_testing());
+  runApp(Course_Assisted_Ui_Testing());
 }
 
-class Course_assisted_ui_testing extends StatefulWidget {
-  const Course_assisted_ui_testing({super.key});
+class Course_Assisted_Ui_Testing extends StatefulWidget {
+  const Course_Assisted_Ui_Testing({super.key});
 
   @override
-  State<Course_assisted_ui_testing> createState() =>
-      _Course_assisted_ui_testingState();
+  State<Course_Assisted_Ui_Testing> createState() =>
+      _Course_Assisted_Ui_TestingState();
 }
 
-class _Course_assisted_ui_testingState
-    extends State<Course_assisted_ui_testing> {
+class _Course_Assisted_Ui_TestingState
+    extends State<Course_Assisted_Ui_Testing> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   // This widget is the root of your application.
@@ -47,32 +47,35 @@ class _Course_assisted_ui_testingState
               return MobileUiScrollUi(count: 9, data: data);
             } else if (constraints.maxWidth < 900) {
               //Tablet Ui
-              return TabletScroolUi(data: data);
+              return TabletScroolUi();
             } else {
-              return Container();
+              return DeskTopUi();
             }
           },
         ),
       ),
-      routes: {
-        //'/': (context) => const MyHomePage(),
-      },
-      // initialRoute:'/',
     );
   }
 }
 
-class TabletScroolUi extends StatelessWidget {
-  const TabletScroolUi({super.key, required this.data});
+class DeskTopUi extends StatelessWidget {
+  const DeskTopUi({super.key});
 
-  final Size data;
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [CustomDrawer(), Expanded(child: TabletScroolUi())]);
+  }
+}
+
+class TabletScroolUi extends StatelessWidget {
+  const TabletScroolUi({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(child: TabletGridBoxWidget(count: 10)),
-        ListViewSection(data: data),
+        ListViewSection(),
       ],
     );
   }
@@ -87,7 +90,7 @@ class MobileUiScrollUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      slivers: [MobileGridBoxWidget(), ListViewSection(data: data)],
+      slivers: [MobileGridBoxWidget(), ListViewSection()],
     );
   }
 }
