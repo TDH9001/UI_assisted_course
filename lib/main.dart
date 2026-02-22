@@ -1,8 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:movie_app/grid_view_builder.dart';
 import 'dart:developer' as dev;
-//FIXME: IM ABCK BABY
+
+import 'package:movie_app/list_view_section.dart';
 
 //TODO: craetea neavigator service
 void main() {
@@ -28,8 +28,13 @@ class Course_assisted_ui_testing extends StatelessWidget {
         body: LayoutBuilder(
           builder: (context, constraints) {
             int count = 2;
-            if (constraints.maxWidth > 600) {
-              count = (constraints.maxWidth / 250.0).toInt();
+            if (constraints.maxWidth < 550 && constraints.maxWidth > 300) {
+              count = (constraints.maxWidth / 200).toInt();
+            } else if (constraints.maxWidth < 1100 &&
+                constraints.maxWidth > 550) {
+              count = (constraints.maxWidth / 250).toInt();
+            } else if (constraints.maxWidth > 1100) {
+              count = (constraints.maxWidth / 350).toInt();
             }
             return CustomScrollView(
               slivers: [
@@ -44,55 +49,6 @@ class Course_assisted_ui_testing extends StatelessWidget {
         //'/': (context) => const MyHomePage(),
       },
       // initialRoute:'/',
-    );
-  }
-}
-
-class GridBoxWidget extends StatelessWidget {
-  final int count;
-  GridBoxWidget({super.key, required this.count});
-  @override
-  Widget build(BuildContext context) {
-    final data = MediaQuery.sizeOf(context);
-
-    return SliverGrid.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: count,
-      ),
-      itemBuilder: (BuildContext context, int index) {
-        return AspectRatio(
-          aspectRatio: 1 / 8,
-          child: Container(
-            margin: EdgeInsets.all(7),
-            height: data.height / 4,
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 180, 180, 180),
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        );
-      },
-      itemCount: 10,
-    );
-  }
-}
-
-class ListViewSection extends StatelessWidget {
-  final Size data;
-  const ListViewSection({super.key, required this.data});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Container(
-          margin: EdgeInsets.all(8),
-          color: Colors.black,
-          width: double.infinity,
-          height: data.height / 8,
-        );
-      },
     );
   }
 }
